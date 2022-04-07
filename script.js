@@ -1,16 +1,16 @@
 /*
 1.Create the algorithm for applying any discount to any item.
+2.Insert the algorithm in a function.
 */
 
-//1.
-var itemPrice, discountPercent, newItemPrice;
+//2.
+function discount(itemPrice, discountPercent){
+    //1.
+    var newItemPrice = (itemPrice * (100 - discountPercent)) / 100;
 
-itemPrice = 850;
-discountPercent = 15;
+    return newItemPrice;      
+}
 
-newItemPrice = (itemPrice * (100 - discountPercent)) / 100;
-
-console.log(newItemPrice);
 
 
 
