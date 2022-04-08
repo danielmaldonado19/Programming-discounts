@@ -8,6 +8,21 @@
 </head>
 <body>
     <h1>Promo website!</h1>
-    <script src="./script.js"></script>
+    <form action="">
+        <label for="inputItemName">Enter the item's name:</label>
+        <br>
+        <input type="text" id="inputItemName">
+        <br>
+        <label for="inputItemPrice">Item's price:</label>
+        <br>
+        <input type="number" id="inputItemPrice">  
+        <br>  
+        <label for="inputItemDisc">Whats the discount of the item:</label>
+        <br>
+        <input type="number" id="inputItemDisc">
+
+        <input type="button" value="Apply Discount" onclick="applyDiscount()">
+    </form>
+    <script src="script.js"></script>
 </body>
 </html>
