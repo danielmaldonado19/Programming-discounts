@@ -4,7 +4,7 @@
 3.Create the input boxes for entering the info for each item.
 4.Create the activation function wich will run the program by clicking the button.
 5.Configure the program for allowing discount cupons by typing codes.
-6.Create a function wich apply to the price after discount, an additional discount for the coupon code.
+6.Use the discount function for applying the coupon discount as well.
 */
 
 var coupon = [
@@ -16,28 +16,29 @@ var coupon = [
 //2.
 function discount(itemPrice, discountPercent){
     //1.
-    var newItemPrice = (itemPrice * (100 - discountPercent)) / 100;
+    var priceAfterDiscount = (itemPrice * (100 - discountPercent)) / 100;
 
-    return newItemPrice;      
+    return priceAfterDiscount;      
 }
 
 //6.
-function couponDiscount(priceAfterFirstDiscount){
+function couponDiscount(){
     var code = document.getElementById("inputCoupon").value;
-    var priceAfterSecondDiscount;
-    value;
+    var discountPercent;
     if(code == coupon[0]){
-        priceAfterSecondDiscount = priceAfterFirstDiscount * 0.975;       
+        discountPercent = 2.5;      
     }
     else if(code == coupon[1]){
-        priceAfterSecondDiscount = priceAfterFirstDiscount * 0.95;       
+        discountPercent = 5;          
     }
     else if(code == coupon[2]){
-        priceAfterSecondDiscount = priceAfterFirstDiscount * 0.925;       
+        discountPercent = 7.5;       
     }
     else{
-        priceAfterSecondDiscount = priceAfterFirstDiscount;
+        discountPercent = 0;
     }
+
+    return discountPercent;
 }
 
 //4.
@@ -46,10 +47,13 @@ function applyDiscount(){
     var inItemPrice = document.getElementById("inputItemPrice").value;
     var inItemDisc = document.getElementById("inputItemDisc").value;
 
-    var firstDiscountPrice = discount(inItemPrice,inItemDisc);    
+    var firstPrice = discount(inItemPrice,inItemDisc);
+    var secondPrice = discount(firstPrice, couponDiscount());
+    
+    document.getElementById("showFirstPrice").innerHTML = "The price of " + inItemName + " after first discount of " + inItemDisc + "%" +
+    " was applied is " + firstPrice;
 
-    document.getElementById("showNewPrice").innerHTML = "The price of " + inItemName + " once the discount of " + inItemDisc + "%" +
-    " was applied is " + firstDiscountPrice;
+    document.getElementById("showSecondPrice").innerHTML = "The price of " + inItemName + " after coupon discount is " + secondPrice;
 
 }
 
